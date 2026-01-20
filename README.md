@@ -1,7 +1,7 @@
 # TwiML Rust
 
 [![Crates.io](https://img.shields.io/crates/v/twiml-rust.svg)](https://crates.io/crates/twiml-rust)
-[![Documentation](https://docs.rs/twiml-rust/badge.svg)](https://docs.rs/twiml-rust)
+[![Documentation](https://docs.rs/twiml-rust/badge.svg)](https://docs.rs/twiml-rust/latest/twiml_rust)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Rust Version](https://img.shields.io/badge/rust-1.70%2B-blue.svg)](https://www.rust-lang.org)
 
@@ -786,7 +786,7 @@ Copyright (c) 2026 TwiML Rust Contributors
 - [SSML Reference](https://www.twilio.com/docs/voice/twiml/say/text-speech#ssml) - Speech Synthesis Markup Language
 
 ### Library Documentation
-- [API Documentation](https://docs.rs/twiml-rust) - Complete API reference on docs.rs
+- [API Documentation](https://docs.rs/twiml-rust/latest/twiml_rust) - Complete API reference on docs.rs
 - [Crates.io](https://crates.io/crates/twiml-rust) - Package on crates.io
 - [GitHub Repository](https://github.com/Roshan0412/twiml-rust) - Source code and issues
 
