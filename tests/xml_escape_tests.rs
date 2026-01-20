@@ -78,4 +78,3 @@ fn test_escape_xml_attr_url_with_params() {
         "https://example.com?a=1&amp;b=2"
     );
 }
-

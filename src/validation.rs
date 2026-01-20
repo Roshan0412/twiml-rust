@@ -401,4 +401,3 @@ pub fn validate_twiml(xml: &str) -> Result<Vec<ValidationError>> {
 pub fn validate_twiml_strict(xml: &str) -> Result<Vec<ValidationError>> {
     TwiMLValidator::strict().validate(xml)
 }
-
