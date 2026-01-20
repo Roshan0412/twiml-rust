@@ -113,7 +113,7 @@ impl ReceiveAttributes {
     }
 }
 
-/// <Receive> TwiML Verb
+/// `<Receive>` TwiML Verb
 #[derive(Debug, Clone)]
 pub struct Receive {
     attributes: ReceiveAttributes,
@@ -150,7 +150,7 @@ impl Receive {
     }
 }
 
-/// <Response> TwiML for Faxes
+/// `<Response>` TwiML for Faxes
 #[derive(Debug, Clone, Default)]
 pub struct FaxResponse {
     receive: Option<Receive>,
@@ -162,12 +162,12 @@ pub struct FaxResponse {
 impl FaxResponse {
     /// Create a new FaxResponse
     ///
-    /// <Response> TwiML for Faxes
+    /// `<Response>` TwiML for Faxes
     pub fn new() -> Self {
         Self::default()
     }
 
-    /// <Receive> TwiML Verb
+    /// `<Receive>` TwiML Verb
     ///
     /// # Arguments
     /// * `attributes` - TwiML attributes
@@ -179,7 +179,7 @@ impl FaxResponse {
         self
     }
 
-    /// Comments in <Response>
+    /// Comments in `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment
@@ -191,7 +191,7 @@ impl FaxResponse {
         self
     }
 
-    /// Comments after <Response>
+    /// Comments after `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment
@@ -203,7 +203,7 @@ impl FaxResponse {
         self
     }
 
-    /// Comments before <Response>
+    /// Comments before `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment

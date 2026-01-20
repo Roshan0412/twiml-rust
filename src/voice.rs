@@ -400,7 +400,7 @@ pub struct SsmlWAttributes {
 // VoiceResponse - Main Response Class
 // ============================================================================
 
-/// <Response> TwiML for Voice
+/// `<Response>` TwiML for Voice
 #[derive(Debug, Clone, Default)]
 pub struct VoiceResponse {
     verbs: Vec<VoiceVerb>,
@@ -2639,12 +2639,12 @@ impl DialWhatsApp {
 }
 
 impl VoiceResponse {
-    /// <Response> TwiML for Voice
+    /// `<Response>` TwiML for Voice
     pub fn new() -> Self {
         Self::default()
     }
 
-    /// Comments in <Response>
+    /// Comments in `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment
@@ -2653,7 +2653,7 @@ impl VoiceResponse {
         self
     }
 
-    /// Comments after <Response>
+    /// Comments after `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment
@@ -2662,7 +2662,7 @@ impl VoiceResponse {
         self
     }
 
-    /// Comments before <Response>
+    /// Comments before `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment
@@ -2671,7 +2671,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Connect> TwiML Verb
+    /// `<Connect>` TwiML Verb
     ///
     /// # Arguments
     /// * `connect` - Pre-configured Connect object
@@ -2680,7 +2680,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Dial> TwiML Verb
+    /// `<Dial>` TwiML Verb
     ///
     /// # Arguments
     /// * `number` - Phone number to dial
@@ -2690,7 +2690,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Dial> TwiML Verb with attributes
+    /// `<Dial>` TwiML Verb with attributes
     ///
     /// # Arguments
     /// * `attributes` - TwiML attributes
@@ -2708,14 +2708,14 @@ impl VoiceResponse {
         dial
     }
 
-    /// <Echo> TwiML Verb
+    /// `<Echo>` TwiML Verb
     pub fn echo(mut self) -> Self {
         let echo = Echo::new();
         self.verbs.push(VoiceVerb::Echo(echo));
         self
     }
 
-    /// <Enqueue> TwiML Noun
+    /// `<Enqueue>` TwiML Noun
     ///
     /// # Arguments
     /// * `enqueue` - Pre-configured Enqueue object
@@ -2724,7 +2724,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Gather> TwiML Verb
+    /// `<Gather>` TwiML Verb
     ///
     /// # Arguments
     /// * `gather` - Pre-configured Gather object
@@ -2733,21 +2733,21 @@ impl VoiceResponse {
         self
     }
 
-    /// <Hangup> TwiML Verb
+    /// `<Hangup>` TwiML Verb
     pub fn hangup(mut self) -> Self {
         let hangup = Hangup::new();
         self.verbs.push(VoiceVerb::Hangup(hangup));
         self
     }
 
-    /// <Leave> TwiML Verb
+    /// `<Leave>` TwiML Verb
     pub fn leave(mut self) -> Self {
         let leave = Leave::new();
         self.verbs.push(VoiceVerb::Leave(leave));
         self
     }
 
-    /// <Pause> TwiML Verb
+    /// `<Pause>` TwiML Verb
     ///
     /// # Arguments
     /// * `length` - Pause length in seconds (optional)
@@ -2757,7 +2757,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Pay> TwiML Verb
+    /// `<Pay>` TwiML Verb
     ///
     /// # Arguments
     /// * `pay` - Pre-configured Pay object
@@ -2766,7 +2766,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Play> TwiML Verb
+    /// `<Play>` TwiML Verb
     ///
     /// # Arguments
     /// * `url` - Media URL
@@ -2776,7 +2776,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Record> TwiML Verb
+    /// `<Record>` TwiML Verb
     ///
     /// # Arguments
     /// * `record` - Pre-configured Record object
@@ -2785,7 +2785,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Redirect> TwiML Verb
+    /// `<Redirect>` TwiML Verb
     ///
     /// # Arguments
     /// * `url` - Redirect URL
@@ -2795,7 +2795,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Refer> TwiML Verb
+    /// `<Refer>` TwiML Verb
     ///
     /// # Arguments
     /// * `refer` - Pre-configured Refer object
@@ -2804,7 +2804,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Reject> TwiML Verb
+    /// `<Reject>` TwiML Verb
     ///
     /// # Arguments
     /// * `reject` - Pre-configured Reject object
@@ -2813,7 +2813,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Say> TwiML Verb
+    /// `<Say>` TwiML Verb
     ///
     /// # Arguments
     /// * `message` - Message to say
@@ -2823,7 +2823,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Start> TwiML Verb
+    /// `<Start>` TwiML Verb
     ///
     /// # Arguments
     /// * `start` - Pre-configured Start object
@@ -2832,14 +2832,14 @@ impl VoiceResponse {
         self
     }
 
-    /// <Stop> TwiML Verb
+    /// `<Stop>` TwiML Verb
     pub fn stop(mut self) -> Self {
         let stop = Stop::new();
         self.verbs.push(VoiceVerb::Stop(stop));
         self
     }
 
-    /// <Sms> TwiML Noun
+    /// `<Sms>` TwiML Noun
     ///
     /// # Arguments
     /// * `message` - SMS message body
@@ -2849,7 +2849,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Queue> TwiML Noun
+    /// `<Queue>` TwiML Noun
     ///
     /// # Arguments
     /// * `name` - Queue name
@@ -2859,7 +2859,7 @@ impl VoiceResponse {
         self
     }
 
-    /// <Prompt> TwiML Verb
+    /// `<Prompt>` TwiML Verb
     ///
     /// # Arguments
     /// * `prompt` - Pre-configured Prompt object

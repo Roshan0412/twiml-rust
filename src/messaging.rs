@@ -108,7 +108,7 @@ impl RedirectAttributes {
     }
 }
 
-/// <Body> TwiML Noun
+/// `<Body>` TwiML Noun
 #[derive(Debug, Clone)]
 pub struct Body {
     message: String,
@@ -127,7 +127,7 @@ impl Body {
     }
 }
 
-/// <Media> TwiML Noun
+/// `<Media>` TwiML Noun
 #[derive(Debug, Clone)]
 pub struct Media {
     url: String,
@@ -144,7 +144,7 @@ impl Media {
     }
 }
 
-/// <Message> TwiML Verb
+/// `<Message>` TwiML Verb
 #[derive(Debug, Clone)]
 pub struct Message {
     attributes: MessageAttributes,
@@ -235,7 +235,7 @@ impl Message {
     }
 }
 
-/// <Redirect> TwiML Verb
+/// `<Redirect>` TwiML Verb
 #[derive(Debug, Clone)]
 pub struct Redirect {
     attributes: RedirectAttributes,
@@ -270,7 +270,7 @@ pub(crate) enum MessagingVerb {
     Redirect(Redirect),
 }
 
-/// <Response> TwiML for Messages
+/// `<Response>` TwiML for Messages
 #[derive(Debug, Clone, Default)]
 pub struct MessagingResponse {
     pub(crate) verbs: Vec<MessagingVerb>,
@@ -282,12 +282,12 @@ pub struct MessagingResponse {
 impl MessagingResponse {
     /// Create a new MessagingResponse
     ///
-    /// <Response> TwiML for Messages
+    /// `<Response>` TwiML for Messages
     pub fn new() -> Self {
         Self::default()
     }
 
-    /// <Message> TwiML Verb
+    /// `<Message>` TwiML Verb
     ///
     /// Supports two calling patterns:
     /// - `message(body)` - Simple message with just body text
@@ -304,7 +304,7 @@ impl MessagingResponse {
         self
     }
 
-    /// <Message> TwiML Verb with attributes
+    /// `<Message>` TwiML Verb with attributes
     ///
     /// # Arguments
     /// * `attributes` - TwiML attributes
@@ -322,9 +322,9 @@ impl MessagingResponse {
         self
     }
 
-    /// <Message> TwiML Verb with Body and Media nouns
+    /// `<Message>` TwiML Verb with Body and Media nouns
     ///
-    /// This allows you to create messages with proper <Body> and <Media> nouns,
+    /// This allows you to create messages with proper `<Body>` and `<Media>` nouns,
     /// supporting multiple media attachments for MMS.
     ///
     /// # Arguments
@@ -350,7 +350,7 @@ impl MessagingResponse {
         self
     }
 
-    /// <Redirect> TwiML Verb
+    /// `<Redirect>` TwiML Verb
     ///
     /// Supports two calling patterns:
     /// - `redirect(url)` - Simple redirect with just URL
@@ -367,7 +367,7 @@ impl MessagingResponse {
         self
     }
 
-    /// <Redirect> TwiML Verb with attributes
+    /// `<Redirect>` TwiML Verb with attributes
     ///
     /// # Arguments
     /// * `attributes` - TwiML attributes
@@ -385,7 +385,7 @@ impl MessagingResponse {
         self
     }
 
-    /// Comments in <Response>
+    /// Comments in `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment
@@ -397,7 +397,7 @@ impl MessagingResponse {
         self
     }
 
-    /// Comments after <Response>
+    /// Comments after `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment
@@ -409,7 +409,7 @@ impl MessagingResponse {
         self
     }
 
-    /// Comments before <Response>
+    /// Comments before `<Response>`
     ///
     /// # Arguments
     /// * `comment` - XML Comment
