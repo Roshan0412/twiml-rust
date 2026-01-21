@@ -600,6 +600,12 @@ impl Dial {
     }
 }
 
+impl Default for Dial {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 // ============================================================================
 // Echo Verb
 // ============================================================================
@@ -664,6 +670,11 @@ impl Enqueue {
     }
 }
 
+impl Default for Enqueue {
+    fn default() -> Self {
+        Self::new()
+    }
+}
 // ============================================================================
 // Gather Verb - Collect User Input
 // ============================================================================
@@ -800,6 +811,12 @@ impl Gather {
     }
 }
 
+impl Default for Gather {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 // ============================================================================
 // Hangup Verb
 // ============================================================================
@@ -894,6 +911,12 @@ impl Pay {
     }
 }
 
+impl Default for Pay {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 // ============================================================================
 // Play Verb - Play Audio
 // ============================================================================
@@ -925,6 +948,12 @@ impl Play {
     pub fn digits(mut self, digits: impl Into<String>) -> Self {
         self.attributes.digits = Some(digits.into());
         self
+    }
+}
+
+impl Default for Play {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -966,6 +995,12 @@ impl Prompt {
     pub fn error_type(mut self, error_type: Vec<String>) -> Self {
         self.attributes.error_type = Some(error_type);
         self
+    }
+}
+
+impl Default for Prompt {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -1072,6 +1107,12 @@ impl Record {
     }
 }
 
+impl Default for Record {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 // ============================================================================
 // Redirect Verb
 // ============================================================================
@@ -1122,6 +1163,12 @@ impl Refer {
     }
 }
 
+impl Default for Refer {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 // ============================================================================
 // Reject Verb
 // ============================================================================
@@ -1141,6 +1188,12 @@ impl Reject {
     pub fn reason(mut self, reason: impl Into<String>) -> Self {
         self.attributes.reason = Some(reason.into());
         self
+    }
+}
+
+impl Default for Reject {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -1358,6 +1411,11 @@ impl Start {
     }
 }
 
+impl Default for Start {
+    fn default() -> Self {
+        Self::new()
+    }
+}
 // ============================================================================
 // Stop Verb
 // ============================================================================
@@ -2995,7 +3053,7 @@ impl TwiML for VoiceResponse {
                     if let Some(lc) = say.attributes.loop_count {
                         xml.push_str(&format!(" loop=\"{}\"", lc));
                     }
-                    xml.push_str(">");
+                    xml.push('>');
 
                     // Add message
                     xml.push_str(&escape_xml_text(&say.message));
@@ -3117,7 +3175,7 @@ impl TwiML for VoiceResponse {
                     if let Some(lc) = play.attributes.loop_count {
                         xml.push_str(&format!(" loop=\"{}\"", lc));
                     }
-                    xml.push_str(">");
+                    xml.push('>');
                     if let Some(url) = &play.url {
                         xml.push_str(&escape_xml_text(url));
                     }
@@ -3199,7 +3257,7 @@ impl TwiML for VoiceResponse {
                             escape_xml_attr(rscm)
                         ));
                     }
-                    xml.push_str(">");
+                    xml.push('>');
 
                     // Add plain number if specified
                     if let Some(num) = &dial.number {
@@ -3496,7 +3554,7 @@ impl TwiML for VoiceResponse {
                                         escape_xml_attr(&codec_list)
                                     ));
                                 }
-                                xml.push_str(">");
+                                xml.push('>');
 
                                 // Add custom SIP headers as child elements
                                 if let Some(headers) = &s.custom_headers {
@@ -3539,7 +3597,7 @@ impl TwiML for VoiceResponse {
                                 }
 
                                 if has_nested {
-                                    xml.push_str(">");
+                                    xml.push('>');
                                     for param in &app.parameters {
                                         xml.push_str("\n      <Parameter");
                                         if let Some(name) = &param.name {
@@ -3701,7 +3759,7 @@ impl TwiML for VoiceResponse {
                                     if let Some(lc) = play.attributes.loop_count {
                                         xml.push_str(&format!(" loop=\"{}\"", lc));
                                     }
-                                    xml.push_str(">");
+                                    xml.push('>');
                                     if let Some(url) = &play.url {
                                         xml.push_str(&escape_xml_text(url));
                                     }
@@ -3787,7 +3845,7 @@ impl TwiML for VoiceResponse {
                     if connect.nested.is_empty() {
                         xml.push_str(" />\n");
                     } else {
-                        xml.push_str(">");
+                        xml.push('>');
 
                         for noun in &connect.nested {
                             match noun {
@@ -3811,7 +3869,7 @@ impl TwiML for VoiceResponse {
                                     if stream.parameters.is_empty() {
                                         xml.push_str(" />");
                                     } else {
-                                        xml.push_str(">");
+                                        xml.push('>');
                                         for param in &stream.parameters {
                                             xml.push_str("\n      <Parameter");
                                             if let Some(n) = &param.name {
@@ -3839,7 +3897,7 @@ impl TwiML for VoiceResponse {
                                             escape_xml_attr(pi)
                                         ));
                                     }
-                                    xml.push_str(">");
+                                    xml.push('>');
                                     if let Some(n) = &room.name {
                                         xml.push_str(&escape_xml_attr(n));
                                     }
@@ -3872,7 +3930,7 @@ impl TwiML for VoiceResponse {
                                     if va.parameters.is_empty() {
                                         xml.push_str(" />");
                                     } else {
-                                        xml.push_str(">");
+                                        xml.push('>');
                                         for param in &va.parameters {
                                             xml.push_str("\n      <Parameter");
                                             if let Some(n) = &param.name {
@@ -3894,7 +3952,7 @@ impl TwiML for VoiceResponse {
                                 }
                                 ConnectNoun::Autopilot(ap) => {
                                     xml.push_str("\n    <Autopilot");
-                                    xml.push_str(">");
+                                    xml.push('>');
                                     if let Some(n) = &ap.name {
                                         xml.push_str(&escape_xml_attr(n));
                                     }
@@ -3997,7 +4055,7 @@ impl TwiML for VoiceResponse {
                                     }
 
                                     if has_nested {
-                                        xml.push_str(">");
+                                        xml.push('>');
 
                                         // Add Language elements
                                         for lang in &cr.languages {
@@ -4104,7 +4162,7 @@ impl TwiML for VoiceResponse {
                     if enqueue.name.is_none() && enqueue.task.is_none() {
                         xml.push_str(" />\n");
                     } else {
-                        xml.push_str(">");
+                        xml.push('>');
                         if let Some(name) = &enqueue.name {
                             xml.push_str(&escape_xml_attr(name));
                         }
@@ -4173,7 +4231,7 @@ impl TwiML for VoiceResponse {
                     if pay.prompts.is_empty() && pay.parameters.is_empty() {
                         xml.push_str(" />\n");
                     } else {
-                        xml.push_str(">");
+                        xml.push('>');
 
                         for prompt in &pay.prompts {
                             xml.push_str("\n    <Prompt");
@@ -4252,7 +4310,7 @@ impl TwiML for VoiceResponse {
                     }
 
                     if let Some(sip) = &refer.refer_sip {
-                        xml.push_str(">");
+                        xml.push('>');
                         xml.push_str(&format!(
                             "\n    <Sip>{}</Sip>",
                             escape_xml_attr(&sip.sip_url)
@@ -4274,7 +4332,7 @@ impl TwiML for VoiceResponse {
                     if start.nested.is_empty() {
                         xml.push_str(" />\n");
                     } else {
-                        xml.push_str(">");
+                        xml.push('>');
 
                         for noun in &start.nested {
                             match noun {
@@ -4311,7 +4369,7 @@ impl TwiML for VoiceResponse {
                                     if stream.parameters.is_empty() {
                                         xml.push_str(" />");
                                     } else {
-                                        xml.push_str(">");
+                                        xml.push('>');
                                         for param in &stream.parameters {
                                             xml.push_str("\n      <Parameter");
                                             if let Some(n) = &param.name {

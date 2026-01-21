@@ -158,12 +158,7 @@ impl TwiMLValidator {
                 }
 
                 // Extract just the tag name (before any space or attribute)
-                let tag = tag_name
-                    .trim()
-                    .split_whitespace()
-                    .next()
-                    .unwrap_or("")
-                    .trim();
+                let tag = tag_name.split_whitespace().next().unwrap_or("").trim();
 
                 if is_closing {
                     // Closing tag - should match the last opening tag
@@ -275,19 +270,18 @@ impl TwiMLValidator {
                             && !url.starts_with("http://")
                             && !url.starts_with("https://")
                             && !url.starts_with('/')
+                            && self.strict
                         {
-                            if self.strict {
-                                errors.push(
-                                    ValidationError::new(
-                                        ValidationErrorType::InvalidUrl,
-                                        format!(
-                                            "URL should start with http://, https://, or /: {}",
-                                            url
-                                        ),
-                                    )
-                                    .with_context(attr.trim_end_matches('=')),
-                                );
-                            }
+                            errors.push(
+                                ValidationError::new(
+                                    ValidationErrorType::InvalidUrl,
+                                    format!(
+                                        "URL should start with http://, https://, or /: {}",
+                                        url
+                                    ),
+                                )
+                                .with_context(attr.trim_end_matches('=')),
+                            );
                         }
                     }
                 }
@@ -313,16 +307,15 @@ impl TwiMLValidator {
                         && !number.starts_with('+')
                         && !number.starts_with("client:")
                         && !number.starts_with("sip:")
+                        && self.strict
                     {
-                        if self.strict {
-                            errors.push(
+                        errors.push(
                                 ValidationError::new(
                                     ValidationErrorType::InvalidPhoneNumber,
                                     format!("Phone number should start with + or be a client/sip identifier: {}", number),
                                 )
                                 .with_context(format!("Number element #{}", i)),
                             );
-                        }
                     }
                 }
             }
